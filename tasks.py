@@ -1,13 +1,14 @@
+import hashlib
 import hmac
 import os
 
 import bcrypt
-import mysql.connector
+import pymysql
 import classes
 
 
 def databaseConnector():
-    my_database = mysql.connector.connect(
+    my_database = pymysql.connect(
         host=os.environ.get("DB_HOSTNAME"),
         user=os.environ.get("DB_USER"),
         password=os.environ.get("DB_PASSWORD")
@@ -37,18 +38,20 @@ def prepareList(myresult):
         result += zadanie.sendStatement()
     return result, najw_index
 
+#TODO: REFACTOR
+# SALT MUST BEADDED TO PASSWORD BEFORE HASHING
 
-def loginTry(uzytkownik, stored_password, salt):
-    # salt = bcrypt.gensalt()
-    # stored_password = bcrypt.hashpw(database_hash.encode(), salt)
-    # print(stored_password)
-    # stored_password = database_hash
-    input_password = bcrypt.hashpw(uzytkownik.haslo.encode(), salt.encode())
 
-    return hmac.compare_digest(input_password, stored_password.encode())
+def loginTry(uzytkownik, stored_password, stored_salt):
+    stored_salt=stored_salt.encode()
+    password = uzytkownik.haslo
+    password = password.encode() + stored_salt
+    hashed = hashlib.sha256(password)
+    hashed = hashed.hexdigest()
+    print(f"{password}, {stored_password}, {hashed}, {stored_salt.decode()}")
+    return stored_password == hashed
 
 
 def hashPassword(haslo):
-    salt = bcrypt.gensalt()
-    hashed_password = bcrypt.hashpw(haslo.encode(), salt)
-    return hashed_password, salt
+    hashed_password= hashlib.sha256(haslo.encode())
+    return hashed_password

@@ -81,12 +81,14 @@ label{
     flex-direction: row;
     flex-wrap: wrap;
     justify-content:center;
+    align-items: center;
     flex-basis:20%;
     color:black;
     border:2px solid black;
     background: linear-gradient(45deg,#FAE137 20%, #FAF8C3 70%);
     border-radius: 5vh;
     padding:1vh;
+    height: 30vh;
 }
 
 .tile-urgent{

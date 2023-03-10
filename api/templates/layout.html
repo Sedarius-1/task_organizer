@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Flask app</title>
+    <title>Main menu</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
   </head>
   <body>
@@ -20,8 +20,8 @@
           <input type="text" id="przedmiot" name="przedmiot" placeholder="Subject"><br/>
           <label for="zadanie">Task:</label><br/>
           <input type="text" id="zadanie" name="zadanie" placeholder="Task"><br/>
-          <label for="data">Due date:</label><br/>
-          <input type="text" id="data" name="data" placeholder="Due date"><br/>
+          <label for="data">Due date(yyyy-mm-dd):</label><br/>
+          <input type="text" id="data" name="data" placeholder="Due date(yyyy-mm-dd)"><br/>
           <button class="menu-submit-button" type="submit">Add task!</button>
         </form>
         <form class = "menu-action-form" action="{{url_for('remove_task',uzytkownik=request.url.split('/')[-1])}}" method="POST">

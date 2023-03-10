@@ -42,7 +42,7 @@ class Zadanie:
                        f"Task ID: {self.id}<br>" \
                        f"Subject: {self.przedmiot} <br>" \
                        f"Task: {self.nazwa_zadania} <br>" \
-                       f"Finished!<br>" \
+                       f"SENT!<br>" \
                        f"</p></div>"
             elif self.skonczone == 1:
                 return f"<div class='tile-finished'><p>" \
@@ -51,7 +51,7 @@ class Zadanie:
                        f"Task: {self.nazwa_zadania} <br>" \
                        f"Due date: {self.oddanie_data} <br>" \
                        f"Days until submission: {self.ile_dni} <br>" \
-                       f"REMEMBER ABOUT SUBMISSING IT<br>" \
+                       f"REMEMBER ABOUT SUBMISSING THIS TASK<br>" \
                        f"</p></div>"
             elif self.getDayDiff().days >= 7:
                 return f"<div class='tile-unfinished'><p>" \
