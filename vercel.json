@@ -9,6 +9,10 @@
     {
       "src": "/(.*)",
       "dest": "web.py"
+    },
+    {
+      "src": "/(.html)",
+      "dest": "templates"
     }
   ]
 }
