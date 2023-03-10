@@ -1,18 +1,15 @@
 {
-  "builds": [
-    {
-      "src": "web.py",
-      "use": "@vercel/python"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "web.py"
-    },
-    {
-      "src": "/(.html)",
-      "dest": "templates"
-    }
-  ]
+    "version": 2,
+    "builds": [
+        {
+            "src": "api/web.py",
+            "use": "@vercel/python"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/(.*)",
+            "dest": "api/web.py"
+        }
+    ]
 }
